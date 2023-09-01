@@ -8,3 +8,6 @@ def hello():
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0')
+
+   #pip install flask
+   #just in case flask is not installed
