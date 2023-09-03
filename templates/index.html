@@ -1,16 +1,19 @@
+<!-- is how you comment-->
 <!DOCTYPE html> 
 <html>
-<head>
+<head> <!--These two links that connect to the style and JS instead of putting it all on the html-->
     <link rel="stylesheet" href="index.css">
     <link rel="Java codes" href="index.js">
 <title>Tic-Tac-Toe</title>
 </head>
 <body>
-<h1> Tic-Tac-Toe </h1>
-<h2 id="authors">Created by Peter & Alex </h2> 
-<hr> 
-<pre><b> > Rules of the game:           </b>
+    <h1> Tic-Tac-Toe </h1>
+    <h2 id="authors">Created by Peter & Alex </h1> 
+    <hr> <!--Creates the line break-->
+    <pre><b> > Rules of the game:           </b> <!--'pre' keeps how the paragraph is & 'b' means bold font-->
     There are no rules</pre> 
+
+    <!-- created the dropdown menu -->
     <div class="dropdown">
         <button class="dropbtn">Menu</button>
         <div class="dropdown-content">
@@ -20,8 +23,24 @@
             <a href="#3">Hard</a>
             <a href="#4">Cheater</a>    
         </div>
-</div>
+    </div>
+    <!-- still needs to change the ai setting/pvp when clicked
+    so the dom/id needs to be made -->
 
-
-</body> </head> </html>
-
+    <!-- creating the tic-tac-toe box -->
+    <div class="gameContainer">
+        <div class="container"></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+            <div class="bod"><span class="boxtext">Hello</span></div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
