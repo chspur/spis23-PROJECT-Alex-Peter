@@ -66,6 +66,13 @@ p {
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
 
-table {
-    border-collaspe
+.gameContainer {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.container {
+
 }
