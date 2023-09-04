@@ -29,23 +29,21 @@ let threeToWin = [
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
 
-
 //what happens when a tic-tac-toe button gets clicked !!!11
 ticButton.forEach(clickyTic);
 
-//
-
-function clickyTic(element) {
-    element.addEventListener("click", () => {
+//da click function
+function clickyTic(carti) {
+    carti.addEventListener("click", () => { //when button is clicked, everything below is run
         if (firstTurn == true) { //Player 1's turn
             firstTurn = false; //switch turns
-            element.innerText = "X"; //draw X
-            element.disabled = true; //make button not able to be clicked anymore
+            carti.innerText = "X"; //draw X
+            carti.disabled = true; //make button not able to be clicked anymore
         }
         else { //Player 2's turn
             firstTurn = true; //switch turns
-            element.innerText = "O"; //draw da O
-            element.disabled = true; //make button not able to be clicked anymore
+            carti.innerText = "O"; //draw da O
+            carti.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
         //checkDraw(); //check for draws on every click
@@ -55,4 +53,21 @@ function clickyTic(element) {
     )
 }
 /*
-function checkDraw { //what happens in a draw?*/
+function checkDraw() { //what happens in a draw?
+    if (turnCount == 9) {
+
+    }
+}
+
+function endDaGame() { //end function
+    ticButton.forEach(stopButtons);
+    function stopButtons(slatt) {
+        slatt.disabled = true;
+        slatt.style.visibility = 'hidden';
+
+    }
+    }
+    )
+}
+
+*/
