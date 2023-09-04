@@ -102,3 +102,9 @@ div1 { /*Is it Jover?*/
     color: red;
     width: 100;
 }
+
+p1 {
+    color: black;
+    padding: 12px;
+    font-size: 32px;
+}
