@@ -46,28 +46,41 @@ function clickyTic(carti) {
             carti.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
-        //checkDraw(); //check for draws on every click
         //checkWin(); //check for wins on every click
+        checkDraw(); //check for draws on every click
 
     }
     )
 }
-/*
+
 function checkDraw() { //what happens in a draw?
     if (turnCount == 9) {
+        enderMan();
 
     }
 }
 
-function endDaGame() { //end function
+function checkWin() {
+    for (let p of threeToWin) { //p to check everything
+        let [first, second, third] = [ //check combinations of 3
+            ticButton[p[0]].innerText, //innerText gets X or O
+            ticButton[p[1]].innerText,
+            ticButton[p[2]].innerText,
+        ];
+        if (first != "" && second != "" && third != "" && first == second && second == third) { 
+        //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
+            enderMan();
+            if (first == "X") {
+                
+            }
+        }
+    }
+}
+
+function enderMan() { //end function
     ticButton.forEach(stopButtons);
     function stopButtons(slatt) {
         slatt.disabled = true;
-        slatt.style.visibility = 'hidden';
-
+        //slatt.style.visibility = 'hidden';
     }
-    }
-    )
 }
-
-*/
