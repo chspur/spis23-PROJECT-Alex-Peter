@@ -32,7 +32,7 @@ let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
 
 endermanText.style.visibility = 'hidden';
-joverButton.addEventListener("click", startyMan());
+joverButton.addEventListener("click", startyMan);
 
 //what happens when a tic-tac-toe button gets clicked !!!11
 ticButton.forEach(clickyTic);
@@ -42,18 +42,20 @@ function clickyTic(carti) {
     carti.addEventListener("click", () => { //when button is clicked, everything below is run
         if (firstTurn == true) { //Player 1's turn
             firstTurn = false; //switch turns
+            carti.style.color = "red";
             carti.innerText = "X"; //draw X
             carti.disabled = true; //make button not able to be clicked anymore
         }
         else { //Player 2's turn
             firstTurn = true; //switch turns
+            carti.style.color = "blue";
             carti.innerText = "O"; //draw da O
             carti.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
-        if checkWin(); //check for wins on every click
-        checkDraw(); //check for draws on every click
-
+        if (checkWin() == false) { //check for wins on every click
+            checkDraw(); //check for draws on every click
+        };
     }
     )
 }
@@ -80,15 +82,16 @@ function checkWin() {
             if (first == "X") {
                 endermanText.innerHTML = "X wins";
                 endermanText.style.visibility = 'visible';
-                //return true;
+                googooginga = true;
             }
             if (first == "O") {
                 endermanText.innerHTML = "O wins";
                 endermanText.style.visibility = 'visible';
-                //return ;
+                googooginga = true;
             }
         }
     }
+    return googooginga;
 }
 
 function enderMan() { //end function
@@ -106,5 +109,7 @@ function startyMan() { //show function for resets
     function startButtons(vamp) {
         vamp.disabled = false;
         vamp.innerText = "";
+        endermanText.style.visibility = 'hidden';
     }
 }
+

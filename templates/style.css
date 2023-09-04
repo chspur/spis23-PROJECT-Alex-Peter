@@ -123,6 +123,19 @@ img {
 } 
 
 .result-end {
-    position: absolute;
-    bottom: 5px
+    justify-content: center;
+    margin-top: 20px;
+
+}
+
+.vl {
+  border-left: 6px solid black;
+  height: 20vw;
+  left: 50vw;
+  position: relative;
+  
+}
+
+svg {
+    color : "red";
 }
