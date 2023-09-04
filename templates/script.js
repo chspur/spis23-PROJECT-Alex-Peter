@@ -1,9 +1,11 @@
 // '//' is how you comment
 // Idk what to put here
 
-//make variables for the buttons bro
-let joverButton = document.getElementById("jover");
-let joverTextReference = document.getElementById("jover-text")
+//make variables for the buttons and text bro bro
+let joverButton = document.querySelector(".joe-button");
+//let joverTextReference = document.getElementById("jover-text") not needed tbh
+let endermanText = document.getElementById("result")
+
 
 //query selector to search multiple elements
 let ticButton = document.querySelectorAll(".tic-tac-button")
@@ -29,6 +31,9 @@ let threeToWin = [
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
 
+endermanText.style.visibility = 'hidden';
+joverButton.addEventListener("click", startyMan());
+
 //what happens when a tic-tac-toe button gets clicked !!!11
 ticButton.forEach(clickyTic);
 
@@ -46,7 +51,7 @@ function clickyTic(carti) {
             carti.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
-        //checkWin(); //check for wins on every click
+        if checkWin(); //check for wins on every click
         checkDraw(); //check for draws on every click
 
     }
@@ -56,11 +61,13 @@ function clickyTic(carti) {
 function checkDraw() { //what happens in a draw?
     if (turnCount == 9) {
         enderMan();
-
+        endermanText.innerHTML = "Draw :(";
+        endermanText.style.visibility = 'visible';
     }
 }
 
 function checkWin() {
+    googooginga = false;
     for (let p of threeToWin) { //p to check everything
         let [first, second, third] = [ //check combinations of 3
             ticButton[p[0]].innerText, //innerText gets X or O
@@ -71,7 +78,14 @@ function checkWin() {
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             enderMan();
             if (first == "X") {
-                
+                endermanText.innerHTML = "X wins";
+                endermanText.style.visibility = 'visible';
+                //return true;
+            }
+            if (first == "O") {
+                endermanText.innerHTML = "O wins";
+                endermanText.style.visibility = 'visible';
+                //return ;
             }
         }
     }
@@ -82,5 +96,15 @@ function enderMan() { //end function
     function stopButtons(slatt) {
         slatt.disabled = true;
         //slatt.style.visibility = 'hidden';
+    }
+}
+
+function startyMan() { //show function for resets
+    firstTurn = true;
+    turnCount = 0;
+    ticButton.forEach(startButtons);
+    function startButtons(vamp) {
+        vamp.disabled = false;
+        vamp.innerText = "";
     }
 }

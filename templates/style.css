@@ -12,7 +12,6 @@ h1 {
 
 h2 {
     text-align: center;
-
 }
 
 pre {
@@ -89,7 +88,7 @@ div1 { /*Is it Jover?*/
 .container { /*Tic-Tac-Toe box*/
     display: grid;
     grid-template-rows: repeat(3, 10vw);
-    grid-template-columns: repeat(3, 10vw);
+    grid-template-columns: repeat(3,10vw);
     font-family:'Roboto', sans-serif;
     border:5px solid black;
     background-color: black;
@@ -97,14 +96,33 @@ div1 { /*Is it Jover?*/
 }
 
 .tic-tac-button { /*fix the transparent color background, put black*/
-    font-size: 120px;
+    font-size: 5vw;
     background: white;
     color: red;
-    width: 100;
+    text-align: center;
 }
 
-p1 {
-    color: black;
-    padding: 12px;
-    font-size: 32px;
+.joe-button {
+    background-color: navy;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+
+}
+
+img {
+    position: absolute;
+    justify-content: center;
+    top: 240px;
+    width: 220px;
+    height: 200px;
+    left: 46vw;
+} 
+
+.result-end {
+    position: absolute;
+    bottom: 5px
 }
