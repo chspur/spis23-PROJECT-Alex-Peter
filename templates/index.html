@@ -1,9 +1,12 @@
 <!-- is how you comment-->
 <!DOCTYPE html> 
 <html lang="en">
-<head> <!--These two links that connect to the style and JS instead of putting it all on the html-->
+<head>
+    <!--Metadata tag makes the viewport look alright on all devices-->
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <!--These two links that connect to the style and JS instead of putting it all on the html-->
     <link rel="stylesheet" href="style.css">
-    <link rel="Java codes" href="index.js">
+    <link rel="Java codes" href="script.js">
     <link rel="Gif" href="gif.thml">
 <title>Tic-Tac-Toe</title>
 </head>
@@ -12,7 +15,8 @@
     <h2 id="authors">Created by Peter & Alex </h1> 
     <hr> <!--Creates the line break-->
     <pre><b> > Rules of the game:           </b> <!--'pre' keeps how the paragraph is & 'b' means bold font-->
-    There are no rules</pre> 
+    3 in a row to win
+    </pre> 
 
     <!-- created the dropdown menu -->
     <div class="dropdown">
@@ -41,10 +45,15 @@
             <button class="tic-tac-button"> </button>
             <button class="tic-tac-button"> </button>
         </div>
-        <div>
+        <!-- <div>
             <button id="reset">Reset</button>
-        </div>
+        </div> -->
+        <div1 class="popup hide">
+            <p id="jover-text">Is it Jover?</p>
+            <button id="jover"> New game </button>
+        </div1>
     </div>
-    <script src="index.js"></script>
+    <!--client-side JavaScript-->
+    <script src="script.js"></script>
 </body>
 </html>
