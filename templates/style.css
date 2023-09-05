@@ -91,21 +91,22 @@ div1 { /*Is it Jover?*/
 
 }
 
-.container { /*Tic-Tac-Toe box*/
+.tic-box { /*Tic-Tac-Toe box*/
     display: grid;
     grid-template-rows: repeat(3, 8vw);
-    grid-template-columns: repeat(3,8vw);
+    grid-template-columns: repeat(3, 8vw);
     font-family:'Roboto', sans-serif;
     border:5px solid black;
     background-color: black;
     grid-gap: 5px;
-    position: absolute
+    position: absolute;
 }
 
 .tic-tac-button { /*fix the transparent color background, put black*/
     font-size: 5vw;
     background: white;
     text-align: center;
+    flex-grow: auto;
 }
 
 .joe-button {
@@ -117,6 +118,17 @@ div1 { /*Is it Jover?*/
     font-size: 16px;
     margin: 4px 2px;
 
+}
+
+img {
+    z-index: 10;
+    /* position: absolute; */
+}
+
+.lines {
+    text-align: center;
+    height: 24vw;
+    width: 24vw;
 }
 
 /* img { 
