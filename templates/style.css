@@ -24,12 +24,6 @@ p {
     margin-bottom: 0;
 }
 
-p1 {
-    text-align:center;
-    position: relative;
-    bottom:18vh;
-}
-
 /* Menu button*/
 .dropbutton {
     background-color: navy;
@@ -133,6 +127,22 @@ img {
 
 }
 
+.winlost-paldean {
+    top: 300px;
+    position: absolute;
+    left: 27vw;
+}
+
+.winlost-whopper {
+    top: 300px;
+    position: absolute;
+    right: 27vw;
+}
+
+p2 {
+    top: 50vw;
+    position: absolute;
+}
 /*
 .vMl {
     border-left: 6px solid black;

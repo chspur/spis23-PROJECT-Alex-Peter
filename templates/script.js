@@ -6,6 +6,9 @@ let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
 let endermanText = document.getElementById("result");
 let quagclod = document.getElementById("turn-counter");
+let drawquag = document.getElementById("draw-image");
+let Lpaldean = document.getElementById("paldeanlost");
+let Wpaldean = document.getElementById("paldeanwin")
 
 
 //query selector to search multiple elements
@@ -34,6 +37,9 @@ let turnCount = 0; // counter to count the turns that have passed
 quagclod.innerHTML = "team QUAGSIRE's turn (X)";
 
 endermanText.style.visibility = 'hidden';
+drawquag.style.visibility = 'hidden';
+Lpaldean.style.visibility = 'hidden';
+Wpaldean.style.visibility = 'hidden';
 joverButton.addEventListener("click", startyMan);
 
 //what happens when a tic-tac-toe button gets clicked !!!11
@@ -69,6 +75,8 @@ function checkDraw() { //what happens in a draw?
         enderMan();
         endermanText.innerHTML = "Draw";
         endermanText.style.visibility = 'visible';
+        drawquag.style.visibility = 'visible';
+
     }
 }
 
@@ -87,12 +95,14 @@ function checkWin() {
                 endermanText.innerHTML = "X wins";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
+                Lpaldean.style.visibility = 'visible';
                 drawWinningLine();
             }
             if (first == "O") {
                 endermanText.innerHTML = "O wins";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
+                Wpaldean.style.visibility = 'visible';
                 drawWinningLine();
             }
         }
@@ -116,6 +126,9 @@ function startyMan() { //show function for resets
         vamp.disabled = false;
         vamp.innerText = "";
         endermanText.style.visibility = 'hidden';
+        drawquag.style.visibility = 'hidden';
+        Lpaldean.style.visibility = 'hidden';
+        Wpaldean.style.visibility = 'hidden';
     }
 }
 
@@ -135,4 +148,3 @@ function drawWinningLine() {
     winningLine.style.height = `${winningLineHeight}px`;
     winningLine.style.left = `${rect.left + containerWidth * (1/6)}px`;
 }
-
