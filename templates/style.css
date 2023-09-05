@@ -1,6 +1,6 @@
 /* is how you comment */
 body {
-    background-color: lightblue;
+    background-image: linear-gradient(to right, lightskyblue, saddlebrown);
 }
 
 h1 {
@@ -22,6 +22,12 @@ p {
     text-align:center;
     font-size: 42px;
     margin-bottom: 0;
+}
+
+p1 {
+    text-align:center;
+    position: relative;
+    bottom:18vh;
 }
 
 /* Menu button*/
@@ -98,7 +104,6 @@ div1 { /*Is it Jover?*/
 .tic-tac-button { /*fix the transparent color background, put black*/
     font-size: 5vw;
     background: white;
-    color: red;
     text-align: center;
 }
 

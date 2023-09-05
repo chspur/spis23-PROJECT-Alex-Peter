@@ -4,11 +4,12 @@
 //make variables for the buttons and text bro bro
 let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
-let endermanText = document.getElementById("result")
+let endermanText = document.getElementById("result");
+let quagclod = document.getElementById("turn-counter");
 
 
 //query selector to search multiple elements
-let ticButton = document.querySelectorAll(".tic-tac-button")
+let ticButton = document.querySelectorAll(".tic-tac-button");
 
 //make lists to go4dawin
 let threeToWin = [
@@ -30,6 +31,7 @@ let threeToWin = [
 //pvp: whos turn is it? Player1 goes first
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
+quagclod.innerHTML = "team QUAGSIRE's turn (X)";
 
 endermanText.style.visibility = 'hidden';
 joverButton.addEventListener("click", startyMan);
@@ -40,15 +42,17 @@ ticButton.forEach(clickyTic);
 //da click function
 function clickyTic(carti) {
     carti.addEventListener("click", () => { //when button is clicked, everything below is run
-        if (firstTurn == true) { //Player 1's turn
+        if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
-            carti.style.color = "red";
+            quagclod.innerHTML = "team CLODSIRE's turn (O)";
+            carti.style.color = "lightskyblue";
             carti.innerText = "X"; //draw X
             carti.disabled = true; //make button not able to be clicked anymore
         }
-        else { //Player 2's turn
+        else { //Clodsire's turn
             firstTurn = true; //switch turns
-            carti.style.color = "blue";
+            quagclod.innerHTML = "team QUAGSIRE's turn (X)";
+            carti.style.color = "saddlebrown";
             carti.innerText = "O"; //draw da O
             carti.disabled = true; //make button not able to be clicked anymore
         }
@@ -63,7 +67,7 @@ function clickyTic(carti) {
 function checkDraw() { //what happens in a draw?
     if (turnCount == 9) {
         enderMan();
-        endermanText.innerHTML = "Draw :(";
+        endermanText.innerHTML = "Draw";
         endermanText.style.visibility = 'visible';
     }
 }
