@@ -6,9 +6,9 @@ let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
 let endermanText = document.getElementById("result");
 let winline = document.getElementById("win-line");
-//let drawquag = document.getElementById("draw-image");
-//let Lpaldean = document.getElementById("paldeanlost");
-//let Wpaldean = document.getElementById("paldeanwin")
+// let drawquag = document.getElementById("draw-image");
+// let Lpaldean = document.getElementById("paldeanlost");
+// let Wpaldean = document.getElementById("paldeanwin")
 
 
 //query selector to search multiple elements
@@ -74,7 +74,7 @@ function checkDraw() { //what happens in a draw?
         enderMan();
         endermanText.innerHTML = "Draw";
         //endermanText.style.visibility = 'visible';
-        //drawquag.style.visibility = 'visible';
+        // drawquag.style.visibility = 'visible';
 
     }
 }
@@ -94,14 +94,14 @@ function checkWin() {
                 endermanText.innerHTML = "team QUAGSIRE wins (X)";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
-                //Lpaldean.style.visibility = 'visible';
+                // Lpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
             if (first == "O") {
                 endermanText.innerHTML = "team CLODSIRE wins (O)";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
-                //Wpaldean.style.visibility = 'visible';
+                // Wpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
         }
