@@ -5,9 +5,8 @@
     <!--Metadata tag makes the viewport look alright on all devices-->
     <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
     <!--These two links that connect to the style and JS instead of putting it all on the html-->
-    <link rel="stylesheet" href="style.css">
-    <link rel="Java codes" href="script.js">
-    <link rel="Gif" href="gif.html">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="Gif" href="gif.html"> -->
 <title>Tic-Tac-Toe</title>
 </head>
 <body> 
@@ -79,6 +78,6 @@
         <img src="https://media.tenor.com/D7_--BUb8lcAAAAC/wooper-pooper.gif" alt="Paldean losing gif" id="paldeanlost">
         </div>
         <p2><img id="draw-image" src="https://64.media.tumblr.com/ecf7540b2410afe67ba4edaa3d59299f/6e38d1ab91dec9a2-4e/s1280x1920/8eff93d816bf16ffe3cb7d5396e80841fe70026c.png" alt="quadsir/Paldean together picture"></p2> -->
-    <script src="script.js"></script>
+    <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 </html>
