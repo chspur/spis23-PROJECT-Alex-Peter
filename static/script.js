@@ -5,6 +5,7 @@
 let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
 let endermanText = document.getElementById("result");
+let winline = document.getElementById("win-line");
 //let drawquag = document.getElementById("draw-image");
 //let Lpaldean = document.getElementById("paldeanlost");
 //let Wpaldean = document.getElementById("paldeanwin")
