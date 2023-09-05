@@ -83,11 +83,13 @@ function checkWin() {
                 endermanText.innerHTML = "X wins";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
+                drawWinningLine();
             }
             if (first == "O") {
                 endermanText.innerHTML = "O wins";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
+                drawWinningLine();
             }
         }
     }
@@ -111,5 +113,22 @@ function startyMan() { //show function for resets
         vamp.innerText = "";
         endermanText.style.visibility = 'hidden';
     }
+}
+
+function drawWinningLine() {
+    var buttonContainer = document.getElementById("button-container");
+    var rect = buttonContainer.getBoundingClientRect();
+    console.log(rect.top, rect.right, rect.bottom, rect.left);
+    var containerHeight = rect.height;
+    var containerWidth = rect.width;
+    var winningLine = document.getElementById("winning-line");
+    winningLine.style.position = "absolute";
+    winningLine.style.border = "thick solid black";
+    // For vertical case
+    var verticalMargin = containerHeight * 0.1;
+    var winningLineHeight = containerHeight * 0.8;
+    winningLine.style.top = `${rect.top + verticalMargin}px`;
+    winningLine.style.height = `${winningLineHeight}px`;
+    winningLine.style.left = `${rect.left + containerWidth * (1/6)}px`;
 }
 
