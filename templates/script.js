@@ -5,10 +5,9 @@
 let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
 let endermanText = document.getElementById("result");
-let quagclod = document.getElementById("turn-counter");
-let drawquag = document.getElementById("draw-image");
-let Lpaldean = document.getElementById("paldeanlost");
-let Wpaldean = document.getElementById("paldeanwin")
+//let drawquag = document.getElementById("draw-image");
+//let Lpaldean = document.getElementById("paldeanlost");
+//let Wpaldean = document.getElementById("paldeanwin")
 
 
 //query selector to search multiple elements
@@ -34,12 +33,11 @@ let threeToWin = [
 //pvp: whos turn is it? Player1 goes first
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
-quagclod.innerHTML = "team QUAGSIRE's turn (X)";
 
-endermanText.style.visibility = 'hidden';
-drawquag.style.visibility = 'hidden';
-Lpaldean.style.visibility = 'hidden';
-Wpaldean.style.visibility = 'hidden';
+//endermanText.style.visibility = 'hidden';
+// drawquag.style.visibility = 'hidden';
+// Lpaldean.style.visibility = 'hidden';
+// Wpaldean.style.visibility = 'hidden';
 joverButton.addEventListener("click", startyMan);
 
 //what happens when a tic-tac-toe button gets clicked !!!11
@@ -50,14 +48,14 @@ function clickyTic(carti) {
     carti.addEventListener("click", () => { //when button is clicked, everything below is run
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
-            quagclod.innerHTML = "team CLODSIRE's turn (O)";
+            endermanText.innerHTML = "team CLODSIRE's turn (O)";
             carti.style.color = "lightskyblue";
             carti.innerText = "X"; //draw X
             carti.disabled = true; //make button not able to be clicked anymore
         }
         else { //Clodsire's turn
             firstTurn = true; //switch turns
-            quagclod.innerHTML = "team QUAGSIRE's turn (X)";
+            endermanText.innerHTML = "team QUAGSIRE's turn (X)";
             carti.style.color = "saddlebrown";
             carti.innerText = "O"; //draw da O
             carti.disabled = true; //make button not able to be clicked anymore
@@ -74,8 +72,8 @@ function checkDraw() { //what happens in a draw?
     if (turnCount == 9) {
         enderMan();
         endermanText.innerHTML = "Draw";
-        endermanText.style.visibility = 'visible';
-        drawquag.style.visibility = 'visible';
+        //endermanText.style.visibility = 'visible';
+        //drawquag.style.visibility = 'visible';
 
     }
 }
@@ -92,18 +90,18 @@ function checkWin() {
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             enderMan();
             if (first == "X") {
-                endermanText.innerHTML = "X wins";
+                endermanText.innerHTML = "team QUAGSIRE wins (X)";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
-                Lpaldean.style.visibility = 'visible';
-                drawWinningLine();
+                //Lpaldean.style.visibility = 'visible';
+                //drawWinningLine();
             }
             if (first == "O") {
-                endermanText.innerHTML = "O wins";
+                endermanText.innerHTML = "team CLODSIRE wins (O)";
                 endermanText.style.visibility = 'visible';
                 googooginga = true;
-                Wpaldean.style.visibility = 'visible';
-                drawWinningLine();
+                //Wpaldean.style.visibility = 'visible';
+                //drawWinningLine();
             }
         }
     }
@@ -121,30 +119,31 @@ function enderMan() { //end function
 function startyMan() { //show function for resets
     firstTurn = true;
     turnCount = 0;
+    endermanText.innerHTML = "team QUAGSIRE's turn (X)";
     ticButton.forEach(startButtons);
     function startButtons(vamp) {
         vamp.disabled = false;
         vamp.innerText = "";
-        endermanText.style.visibility = 'hidden';
-        drawquag.style.visibility = 'hidden';
-        Lpaldean.style.visibility = 'hidden';
-        Wpaldean.style.visibility = 'hidden';
+        // endermanText.style.visibility = 'hidden';
+        // drawquag.style.visibility = 'hidden';
+        // Lpaldean.style.visibility = 'hidden';
+        // Wpaldean.style.visibility = 'hidden';
     }
 }
 
-function drawWinningLine() {
-    var buttonContainer = document.getElementById("button-container");
-    var rect = buttonContainer.getBoundingClientRect();
-    console.log(rect.top, rect.right, rect.bottom, rect.left);
-    var containerHeight = rect.height;
-    var containerWidth = rect.width;
-    var winningLine = document.getElementById("winning-line");
-    winningLine.style.position = "absolute";
-    winningLine.style.border = "thick solid black";
-    // For vertical case
-    var verticalMargin = containerHeight * 0.1;
-    var winningLineHeight = containerHeight * 0.8;
-    winningLine.style.top = `${rect.top + verticalMargin}px`;
-    winningLine.style.height = `${winningLineHeight}px`;
-    winningLine.style.left = `${rect.left + containerWidth * (1/6)}px`;
-}
+// function drawWinningLine() {
+//     var buttonContainer = document.getElementById("button-container");
+//     var rect = buttonContainer.getBoundingClientRect();
+//     console.log(rect.top, rect.right, rect.bottom, rect.left);
+//     var containerHeight = rect.height;
+//     var containerWidth = rect.width;
+//     var winningLine = document.getElementById("winning-line");
+//     winningLine.style.position = "absolute";
+//     winningLine.style.border = "thick solid black";
+//     // For vertical case
+//     var verticalMargin = containerHeight * 0.1;
+//     var winningLineHeight = containerHeight * 0.8;
+//     winningLine.style.top = `${rect.top + verticalMargin}px`;
+//     winningLine.style.height = `${winningLineHeight}px`;
+//     winningLine.style.left = `${rect.left + containerWidth * (1/6)}px`;
+//}
