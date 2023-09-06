@@ -6,6 +6,10 @@ let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
 let resultText = document.getElementById("result");
 let winLine = document.getElementsByClassName("win-line");
+let threexelement = document.getElementById("threebythree");
+let ninexelement = document.getElementById("ninebynine");
+let referenceThreeBox = document.querySelector(".tic-box");
+let referenceNineBox = document.querySelector(".ultimate-tic-box");
 // let drawquag = document.getElementById("draw-image");
 // let Lpaldean = document.getElementById("paldeanlost");
 // let Wpaldean = document.getElementById("paldeanwin")
@@ -13,6 +17,7 @@ let winLine = document.getElementsByClassName("win-line");
 
 //query selector to search multiple elements
 let ticButton = document.querySelectorAll(".tic-tac-button");
+let ultimateTicButton = document.querySelectorAll(".ultimate-tic-tac-button");
 
 //make lists to go4dawin
 let threeToWin = [
@@ -39,10 +44,19 @@ let turnCount = 0; // counter to count the turns that have passed
 // drawquag.style.visibility = 'hidden';
 // Lpaldean.style.visibility = 'hidden';
 // Wpaldean.style.visibility = 'hidden';
+
+ninexelement.addEventListener("click", setNine);
+function setNine() {
+    console.log('hit')
+    referenceThreeBox.style.display = 'none';
+    referenceNineBox.style.display = 'grid';
+}
+
 joverButton.addEventListener("click", startyMan);
 
 //what happens when a tic-tac-toe button gets clicked !!!11
 ticButton.forEach(clickyTic);
+ultimateTicButton.forEach(clickyTic);
 
 //da click function
 function clickyTic(buttonTile) {

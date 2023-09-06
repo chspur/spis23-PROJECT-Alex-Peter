@@ -26,8 +26,10 @@
         <div class="dropdown">
             <button class="dropbutton">Menu</button>
             <div class="dropdown-content">
-                <a href="#0">3 x 3</a>
-                <a href="#1">9 x 9</a>
+                <a href="#0" id ="threebythree">3 x 3</a>
+                <a href="#1" id ="ninebynine">9 x 9</a>
+                <!-- <option value="three">3x3</option>
+                <option value="nine">9x9</option> -->
             </div>
         </div>
 
@@ -69,6 +71,17 @@
                 <img class="win-line" src="{{ url_for('static', filename='dnegativelinebrown.png') }}" alt="">
                 <img class="win-line" src="{{ url_for('static', filename='dpositivelinebrown.png') }}" alt="">
             </div>
+            <div id="button-container" class="ultimate-tic-box">
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+                <button class="ultimate-tic-tac-button"> </button>
+            </div> 
         </div>
 
         <!-- <p><img src="https://media.tenor.com/n41gw_14DtgAAAAC/quagsire-pokemon.gif" alt="gif">
