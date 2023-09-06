@@ -94,6 +94,7 @@ function checkWin() {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 //resultText.style.visibility = 'visible';
                 isWin = true;
+                drawWinLine(p);
                 // Lpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
@@ -110,9 +111,17 @@ function checkWin() {
 }
 
 
-drawWinLine();
-function drawWinLine() {
+function drawWinLine(specificCondition) {
+    /*
+    key = String(specificCondition);
     //winLine[0].style.display = 'block';
+    var dict = {"0": 0, "1": 1, "2": 2,
+                "3": 3, "4": 4, "5": 5,
+                "6": 6, "7": 7};
+    imageNumber = dict.key;
+    a = parseInt(imageNumber);
+    */
+    winLine[specificCondition].style.display = 'block';
 }
 
 function enderMan() { //end function
