@@ -4,8 +4,8 @@
 //make variables for the buttons and text bro bro
 let joverButton = document.querySelector(".joe-button");
 //let joverTextReference = document.getElementById("jover-text") not needed tbh
-let endermanText = document.getElementById("result");
-let winline = document.getElementById("win-line");
+let resultText = document.getElementById("result");
+let winLine = document.getElementsByClassName("win-line");
 // let drawquag = document.getElementById("draw-image");
 // let Lpaldean = document.getElementById("paldeanlost");
 // let Wpaldean = document.getElementById("paldeanwin")
@@ -35,7 +35,7 @@ let threeToWin = [
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
 
-//endermanText.style.visibility = 'hidden';
+//resultText.style.visibility = 'hidden';
 // drawquag.style.visibility = 'hidden';
 // Lpaldean.style.visibility = 'hidden';
 // Wpaldean.style.visibility = 'hidden';
@@ -45,21 +45,21 @@ joverButton.addEventListener("click", startyMan);
 ticButton.forEach(clickyTic);
 
 //da click function
-function clickyTic(carti) {
-    carti.addEventListener("click", () => { //when button is clicked, everything below is run
+function clickyTic(buttonTile) {
+    buttonTile.addEventListener("click", () => { //when button is clicked, everything below is run
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
-            endermanText.innerHTML = "team CLODSIRE's turn (O)";
-            carti.style.color = "lightskyblue";
-            carti.innerText = "X"; //draw X
-            carti.disabled = true; //make button not able to be clicked anymore
+            resultText.innerHTML = "team CLODSIRE's turn (O)";
+            buttonTile.style.color = "lightskyblue";
+            buttonTile.innerText = "X"; //draw X
+            buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         else { //Clodsire's turn
             firstTurn = true; //switch turns
-            endermanText.innerHTML = "team QUAGSIRE's turn (X)";
-            carti.style.color = "saddlebrown";
-            carti.innerText = "O"; //draw da O
-            carti.disabled = true; //make button not able to be clicked anymore
+            resultText.innerHTML = "team QUAGSIRE's turn (X)";
+            buttonTile.style.color = "saddlebrown";
+            buttonTile.innerText = "O"; //draw da O
+            buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
         if (checkWin() == false) { //check for wins on every click
@@ -72,15 +72,15 @@ function clickyTic(carti) {
 function checkDraw() { //what happens in a draw?
     if (turnCount == 9) {
         enderMan();
-        endermanText.innerHTML = "Draw";
-        //endermanText.style.visibility = 'visible';
+        resultText.innerHTML = "Draw";
+        //resultText.style.visibility = 'visible';
         // drawquag.style.visibility = 'visible';
 
     }
 }
 
 function checkWin() {
-    googooginga = false;
+    isWin = false;
     for (let p of threeToWin) { //p to check everything
         let [first, second, third] = [ //check combinations of 3
             ticButton[p[0]].innerText, //innerText gets X or O
@@ -91,41 +91,47 @@ function checkWin() {
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             enderMan();
             if (first == "X") {
-                endermanText.innerHTML = "team QUAGSIRE wins (X)";
-                endermanText.style.visibility = 'visible';
-                googooginga = true;
+                resultText.innerHTML = "team QUAGSIRE wins (X)";
+                //resultText.style.visibility = 'visible';
+                isWin = true;
                 // Lpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
             if (first == "O") {
-                endermanText.innerHTML = "team CLODSIRE wins (O)";
-                endermanText.style.visibility = 'visible';
-                googooginga = true;
+                resultText.innerHTML = "team CLODSIRE wins (O)";
+                //resultText.style.visibility = 'visible';
+                isWin = true;
                 // Wpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
         }
     }
-    return googooginga;
+    return isWin;
+}
+
+
+drawWinLine();
+function drawWinLine() {
+    winLine[0].style.display = 'block';
 }
 
 function enderMan() { //end function
     ticButton.forEach(stopButtons);
-    function stopButtons(slatt) {
-        slatt.disabled = true;
-        //slatt.style.visibility = 'hidden';
+    function stopButtons(tileButtons) {
+        tileButtons.disabled = true;
+        //tileButtons.style.visibility = 'hidden';
     }
 }
 
 function startyMan() { //show function for resets
     firstTurn = true;
     turnCount = 0;
-    endermanText.innerHTML = "team QUAGSIRE's turn (X)";
+    resultText.innerHTML = "team QUAGSIRE's turn (X)";
     ticButton.forEach(startButtons);
-    function startButtons(vamp) {
-        vamp.disabled = false;
-        vamp.innerText = "";
-        // endermanText.style.visibility = 'hidden';
+    function startButtons(tileButtons) {
+        tileButtons.disabled = false;
+        tileButtons.innerText = "";
+        // resultText.style.visibility = 'hidden';
         // drawquag.style.visibility = 'hidden';
         // Lpaldean.style.visibility = 'hidden';
         // Wpaldean.style.visibility = 'hidden';
