@@ -112,7 +112,7 @@ function checkWin() {
 
 drawWinLine();
 function drawWinLine() {
-    winLine[0].style.display = 'block';
+    //winLine[0].style.display = 'block';
 }
 
 function enderMan() { //end function
