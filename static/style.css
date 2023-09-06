@@ -102,19 +102,38 @@ div1 { /*Is it Jover?*/
     position: absolute;
 }
 
-/*
+
 .ultimate-box {
     display: block;
-    position: relative;
+    position: absolute;
+    justify-content: center;
 }
-*/
+
+
+.ultimate-container { /*Tic-Tac-Toe placement*/
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    position: absolute
+}
 
 .ultimate-tic-box {
     display: none;
-    grid-template-rows: repeat(3, 5vw);
+    /* grid-template-rows: repeat(3, 5vw);
     grid-template-columns: repeat(3, 5vw);
     font-family:'Roboto', sans-serif;
     border:5px solid black;
+    background-color: black;
+    grid-gap: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 50%; */
+    grid-template-rows: repeat(9, 3vw);
+    grid-template-columns: repeat(9, 3vw);
+    font-family: 'Roboto', sans-serif;
+    border: 5px solid black;
     background-color: black;
     grid-gap: 5px;
     position: absolute;

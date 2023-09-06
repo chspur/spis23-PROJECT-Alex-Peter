@@ -198,7 +198,7 @@ function clickyTicUltimate(buttonTile) {
         turnCount += 1; //increase counter on every click
         if (checkWinUltimate() == false) { //check for wins on every click
             checkDraw(); //check for draws on every click
-        };
+        }
     }
     )
 }
@@ -212,14 +212,30 @@ function checkDrawUltimate() { //what happens in a draw?
     }
 }
 
-function checkWinUltimate() {
+function checkWinUltimateUnoBoard(x) {
+    console.log(ultimateTicButton);
+    let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
+    x %= 9; //mod by 9 to get 0-8 x coordinate
+    let peterSmells = []
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+            let newX = x + i;
+            let newY = y + j;
+            let index = 9 * newY + newX;
+            peterSmells.push(ultimateTicButton[index]);
+        }
+    }
+
+    // console.log(peterSmells);
+
     isWin = false;
-    for (let i = 0; i < threeToWin.length; i++) { //p to check everything
+    for (let i = 0; i < threeToWin.length; i++) {
+        // console.log(ultimateTicButton); //p to check everything
         const p = threeToWin[i];
         let [first, second, third] = [ //check combinations of 3
-            ultimateTicButton[p[0]].innerText, //innerText gets X or O
-            ultimateTicButton[p[1]].innerText,
-            ultimateTicButton[p[2]].innerText,
+            peterSmells[p[0]].innerText, //innerText gets X or O
+            peterSmells[p[1]].innerText,
+            peterSmells[p[2]].innerText,
         ];
         if (first != "" && second != "" && third != "" && first == second && second == third) { 
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
@@ -235,6 +251,14 @@ function checkWinUltimate() {
         }
     }
     return isWin;
+}
+
+function checkWinUltimate() {
+    for (let i = 0; i < 80; i += 27) {
+        for (let j = 0; j < 9; j += 3) {
+            checkWinUltimateUnoBoard(i + j); //top left of each 3x3 grid
+        }
+    }
 }
 function enderManUltimate() { //end function
     ultimateTicButton.forEach(stopButtons);
