@@ -181,6 +181,8 @@ function startyMan() { //show function for resets
 //copy paste functions for ultimate versions
 function clickyTicUltimate(buttonTile) {
     buttonTile.addEventListener("click", () => { //when button is clicked, everything below is run
+        // save the index 0-80 which is the addedTTTIndex
+
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
             resultText.innerHTML = "team CLODSIRE's turn (O)";
@@ -213,16 +215,22 @@ function checkDrawUltimate() { //what happens in a draw?
 }
 
 function checkWinUltimateUnoBoard(x) {
-    console.log(ultimateTicButton);
+    // console.log(ultimateTicButton);
     let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
     x %= 9; //mod by 9 to get 0-8 x coordinate
-    let peterSmells = []
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            let newX = x + i;
-            let newY = y + j;
-            let index = 9 * newY + newX;
-            peterSmells.push(ultimateTicButton[index]);
+    let peterSmells = [] //create array
+    for (let i = 0; i < 3; i++) { //traverse through 3
+        for (let j = 0; j < 3; j++) { //traverse through 3
+            let newX = x + j;
+            let newY = y + i; //the other 8 coordinates
+            let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
+
+
+            // if (index == addedTTTIndex) { // get index of coordinate you just added
+            //     i * 27 + j * 3 // top left corner of 3x3 you wanna enable
+            // }
+
+            peterSmells.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
 
