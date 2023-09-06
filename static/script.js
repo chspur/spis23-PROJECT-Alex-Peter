@@ -81,7 +81,8 @@ function checkDraw() { //what happens in a draw?
 
 function checkWin() {
     isWin = false;
-    for (let p of threeToWin) { //p to check everything
+    for (let i = 0; i < threeToWin.length; i++) { //p to check everything
+        const p = threeToWin[i];
         let [first, second, third] = [ //check combinations of 3
             ticButton[p[0]].innerText, //innerText gets X or O
             ticButton[p[1]].innerText,
@@ -94,7 +95,6 @@ function checkWin() {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 //resultText.style.visibility = 'visible';
                 isWin = true;
-                drawWinLine(p);
                 // Lpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
@@ -105,30 +105,36 @@ function checkWin() {
                 // Wpaldean.style.visibility = 'visible';
                 //drawWinningLine();
             }
+            drawWinLine(i, first);
         }
     }
     return isWin;
 }
 
 
-function drawWinLine(specificCondition) {
-    /*
-    key = String(specificCondition);
-    //winLine[0].style.display = 'block';
-    var dict = {"0": 0, "1": 1, "2": 2,
-                "3": 3, "4": 4, "5": 5,
-                "6": 6, "7": 7};
-    imageNumber = dict.key;
-    a = parseInt(imageNumber);
-    */
-    winLine[specificCondition].style.display = 'block';
+function drawWinLine(specificCondition, winner) {
+    if (winner == "X") {
+        key = String(specificCondition);
+        var dict = {"0": 0, "1": 1, "2": 2,
+                    "3": 3, "4": 4, "5": 5,
+                    "6": 6, "7": 7};
+        imageNumber = dict[key];
+        winLine[imageNumber].style.display = 'block';
+    }
+    if (winner == "O") {
+        key = String(specificCondition);
+        var dict = {"0": 8, "1": 9, "2": 10,
+                    "3": 11, "4": 12, "5": 13,
+                    "6": 14, "7": 15};
+        imageNumber = dict[key];
+        winLine[imageNumber].style.display = 'block';
+    }
 }
 
 function enderMan() { //end function
     ticButton.forEach(stopButtons);
     function stopButtons(tileButtons) {
         tileButtons.disabled = true;
-        //tileButtons.style.visibility = 'hidden';
     }
 }
 
@@ -145,21 +151,7 @@ function startyMan() { //show function for resets
         // Lpaldean.style.visibility = 'hidden';
         // Wpaldean.style.visibility = 'hidden';
     }
+    for (let i = 0; i < 16; i++) {
+        winLine[i].style.display = 'none';
+    }
 }
-
-// function drawWinningLine() {
-//     var buttonContainer = document.getElementById("button-container");
-//     var rect = buttonContainer.getBoundingClientRect();
-//     console.log(rect.top, rect.right, rect.bottom, rect.left);
-//     var containerHeight = rect.height;
-//     var containerWidth = rect.width;
-//     var winningLine = document.getElementById("winning-line");
-//     winningLine.style.position = "absolute";
-//     winningLine.style.border = "thick solid black";
-//     // For vertical case
-//     var verticalMargin = containerHeight * 0.1;
-//     var winningLineHeight = containerHeight * 0.8;
-//     winningLine.style.top = `${rect.top + verticalMargin}px`;
-//     winningLine.style.height = `${winningLineHeight}px`;
-//     winningLine.style.left = `${rect.left + containerWidth * (1/6)}px`;
-//}
