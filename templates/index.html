@@ -14,13 +14,11 @@
 <body>
     <h1>Tic-Tac-Toe</h1>
     <h2 id="authors">Created by Peter & Alex </h1>
-        <hr> <!--Creates the line break-->
-        <pre><b> > Rules of the game:           </b> <!--'pre' keeps how the paragraph is & 'b' means bold font-->
+    <hr> <!--Creates the line break-->
+    <pre><b> > Rules of the game:</b>
     Get 3 in a row to win
     Good luck and have fun!!
-    
     </pre>
-
 
         <!-- created the dropdown menu -->
         <div class="dropdown">
@@ -33,16 +31,15 @@
             </div>
         </div>
 
-        <!-- still needs to change the ai setting/pvp when clicked
-        so the dom/id needs to be made -->
         <p id="result">team QUAGSIRE's turn (X)</p>
         <div1 class="jover-text">
             <p>Is it Jover?</p>
             <button class="joe-button"> New game </button>
         </div1>
-        <!-- <img src="/left line transparent.pngf" alt=""> -->
+
         <div class="button-container-container">
             <div id="button-container" class="tic-box">
+
                 <button class="tic-tac-button"> </button>
                 <button class="tic-tac-button"> </button>
                 <button class="tic-tac-button"> </button>
@@ -71,32 +68,22 @@
                 <img class="win-line" src="{{ url_for('static', filename='dnegativelinebrown.png') }}" alt="">
                 <img class="win-line" src="{{ url_for('static', filename='dpositivelinebrown.png') }}" alt="">
             </div>
-            <div id="button-container" class="ultimate-tic-box">
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-                <button class="ultimate-tic-tac-button"> </button>
-            </div> 
+                <div id="button-container" class="ultimate-tic-box">
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                    <button class="ultimate-tic-tac-button"> </button>
+                </div> 
         </div>
-
-        <!-- <p><img src="https://media.tenor.com/n41gw_14DtgAAAAC/quagsire-pokemon.gif" alt="gif">
-            </p> -->
-
         <div id="winning-line"></div>
         <!-- <svg>
             <image class="change-my-color" xlink:href="https://www.svgrepo.com/show/12848/x-symbol.svg" width="96" height="96" src="ppngfallback.png" />
         </svg> -->
-
-        <!-- <div class="winlost-paldean"> -->
-        <!-- <img src="https://64.media.tumblr.com/e42e50fe06033fb9bd8bc62348591e38/6a364980701c2555-20/s1280x1920/df9df72157d086561c28835d1e4c70fd8154db26.gifv" alt="Paldean winning animation" id="paldeanwin">
-        <img src="https://media.tenor.com/D7_--BUb8lcAAAAC/wooper-pooper.gif" alt="Paldean losing gif" id="paldeanlost">
-        </div>
-        <p2><img id="draw-image" src="https://64.media.tumblr.com/ecf7540b2410afe67ba4edaa3d59299f/6e38d1ab91dec9a2-4e/s1280x1920/8eff93d816bf16ffe3cb7d5396e80841fe70026c.png" alt="quadsir/Paldean together picture"></p2> -->
         <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 

@@ -102,6 +102,12 @@ div1 { /*Is it Jover?*/
     position: absolute;
 }
 
+/*
+.ultimate-box {
+    display: block;
+    position: relative;
+}
+*/
 
 .ultimate-tic-box {
     display: none;
@@ -113,8 +119,6 @@ div1 { /*Is it Jover?*/
     grid-gap: 5px;
     position: absolute;
 }
-
-
 
 .ultimate-tic-tac-button {
     font-size: 4vw;
@@ -163,28 +167,8 @@ img {
     display: none;
 }
 
-/* img { 
-    position: relative;
-    bottom: 250px;
-    width: 200px;
-    height: 200px;
-    left: 0px;
-}  */
-
 .result-end {
     justify-content: center;
     bottom: 100px;
     position:relative
 }
-
-/* .winlost-paldean {
-    top: 300px;
-    position: relative;
-    left: 27;
-}
-
-.winlost-whopper {
-    top: 300px;
-    position: relative;
-    left: 100px; 
-}*/
