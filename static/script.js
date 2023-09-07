@@ -224,19 +224,19 @@ function checkDrawUltimate() { //what happens in a draw?
 function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of each grid
     let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
     x %= 9; //mod by 9 to get 0-8 x coordinate
-    let peterSmells = [] //create array
+    let tripleGridArray = [] //create array
     for (let i = 0; i < 3; i++) { //traverse through 3
         for (let j = 0; j < 3; j++) { //traverse through 3
             let newX = x + j;
             let newY = y + i; //the other 8 coordinates
             let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
             /*
-            addedTTTIndex = corresponsion();
-            // if (index == addedTTTIndex) { // get index of coordinate you just added
-            //     i * 27 + j * 3 // top left corner of 3x3 you wanna enable
-            // }
-    */
-            peterSmells.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
+            aaron comments lmao
+            if (index == addedTTTIndex) { // get index of coordinate you just added
+                i * 27 + j * 3 // top left corner of 3x3 you wanna enable
+            }
+            */
+            tripleGridArray.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
 
@@ -245,9 +245,9 @@ function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of ea
     for (let i = 0; i < threeToWin.length; i++) {
         const p = threeToWin[i];
         let [first, second, third] = [ //check combinations of 3
-            peterSmells[p[0]].innerText, //innerText gets X or O
-            peterSmells[p[1]].innerText,
-            peterSmells[p[2]].innerText,
+            tripleGridArray[p[0]].innerText, //innerText gets X or O
+            tripleGridArray[p[1]].innerText,
+            tripleGridArray[p[2]].innerText,
         ];
         if (first != "" && second != "" && third != "" && first == second && second == third) { 
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
@@ -264,17 +264,51 @@ function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of ea
 }
 
 
-/*
+
 //function corresponsion(threebythreeGrids, buttonTile) {
 function corresponsion() {
-    //TIME FOR CORRESPONDINGSION
-    for (let i = 0; i <= 80; i++) {
+    for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
         if (ultimateTicButton[i].innerText == ",") {
-            return i;
+            let xCoord = String(i % 3); //0, 1, or 2 for x columns
+            let yCoord = "slatt!";
+
+            //if statements to get 0, 1, or 2 for y rows
+            if (i < 27) {
+                yCoord = String(~~(i / 9));
+            }
+            else if (i < 54) {
+                yCoord = String(~~((i-27) / 9));
+            }
+            else if (i < 81) {
+                yCoord = String(~~((i-54) / 9));
+            }
+
+            //dictionaries to get positioning
+            var hori = {"0": "left", 
+                        "1": "mid", 
+                        "2": "right"}
+            var vert = {"0": "top", 
+                        "1": "cent", 
+                        "2": "bot"}
+            
+            //ok now get the corresponding 3x3 grid
+            //let xPosition = hori[xCoord];
+            //let yPosition = vert[yCoord];
+            //let describedPosition = "" + xPosition + yPosition
+            let describedPosition = "" + hori[xCoord] + vert[yCoord];
+            var tlCorner = {"lefttop": 0, "midtop": 3, "righttop": 6,
+                            "leftcent": 27, "midcent": 30, "rightcent": 33,
+                            "leftbot": 54, "midbot": 57, "rightbot": 60}
+            let tlIndex = tlCorner[describedPosition]; //gets the top left corner of 3x3 grid
+            for (let i = 0; i < 3; i++) { //traverse through 3
+                for (let j = 0; j < 3; j++) { //traverse through 3
+                    
+                }
+            }
         }
     }
 }
-*/
+
 
 /*
 function enderManUltimate() { //end function
