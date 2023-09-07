@@ -46,7 +46,7 @@ function setNine() {
     resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceThreeBox.style.display = 'none';
     referenceNineBox.style.display = 'grid';
-    logo.style.display = 'none';
+    //logo.style.display = 'none';
     startyManUltimate();
 }
 

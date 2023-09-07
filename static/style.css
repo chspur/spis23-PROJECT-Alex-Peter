@@ -142,10 +142,10 @@ div1 { /*Is it Jover?*/
 }
 
 .Heeju {
-    position: absolute;
+    position: relative;
     bottom: 5vw;
-    width: 25vw;
-    height: 25vw;
+    width: 30vw;
+    height: 30vw;
     left:35vw;
 }
 
