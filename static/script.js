@@ -198,8 +198,8 @@ function clickyTicUltimate(buttonTile) {
                     checkWinUltimate(i); //go !
                 }
             }
-            buttonTile.innerText = "X";
-            buttonTile.disabled = true; //make button not able to be clicked anymore
+            //buttonTile.innerText = "X";
+            //buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         else { //Clodsire's turn
             firstTurn = true; //switch turns
@@ -211,8 +211,8 @@ function clickyTicUltimate(buttonTile) {
                     checkWinUltimate(i); //go !
                 }
             }
-            buttonTile.innerText = "O";
-            buttonTile.disabled = true; //make button not able to be clicked anymore
+            //buttonTile.innerText = "O";
+            //buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
         /*
@@ -282,6 +282,16 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             tripleGridArray.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
+    //put back X or O
+    if (ultimateTicButton[target].innerText == ",") {
+        if (ultimateTicButton[target].style.color == "lightskyblue") {
+            ultimateTicButton[target].innerText = "X";
+        }
+        if (ultimateTicButton[target].style.color == "saddlebrown") {
+            ultimateTicButton[target].innerText = "O";
+        }
+        ultimateTicButton[target].disabled = "true";
+    }
 
     //original 3x3 check win function
     isWin = false;
@@ -309,10 +319,6 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
 
 /*
 function corresponsion() {
-    ultimateTicButton.forEach(ele);
-    function ele(tileButtons) {
-        tileButtons.disabled = "true";
-    }
     for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
         if (ultimateTicButton[i].innerText == ",") {
             let xCoord = String(i % 3); //0, 1, or 2 for x columns
