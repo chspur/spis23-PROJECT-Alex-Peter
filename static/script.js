@@ -72,6 +72,7 @@ function setNine() {
     resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceThreeBox.style.display = 'none';
     referenceNineBox.style.display = 'grid';
+    finalWinText.innerHTML = "who shall win ?";
     startyManUltimate();
 }
 
@@ -81,6 +82,7 @@ function setThree() {
     resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceNineBox.style.display = 'none';
     referenceThreeBox.style.display = 'grid';
+    finalWinText.innerHTML = "you should probably click menu";
     startyMan();
 }
 
