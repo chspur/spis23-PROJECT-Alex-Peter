@@ -121,6 +121,7 @@ div1 { /*Is it Jover?*/
     border:5px solid black;
     background-color: black;
     grid-gap: 5px;
+    position: relative;
 }
 
 

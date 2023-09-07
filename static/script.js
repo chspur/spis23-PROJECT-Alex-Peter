@@ -9,7 +9,7 @@ let threexelement = document.getElementById("threebythree");
 let ninexelement = document.getElementById("ninebynine");
 let referenceThreeBox = document.querySelector(".tic-box");
 let referenceNineBox = document.querySelector(".ultimate-tic-box");
-let logo = document.getElementById("drawing");
+// let logo = document.getElementById("drawing");
 
 
 //query selector to search multiple elements
@@ -36,6 +36,7 @@ let threeToWin = [
 //pvp: whos turn is it? Player1 goes first
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
+let ultimateWinArray = [];
 
 //resultText.style.visibility = 'hidden';
 referenceThreeBox.style.display = 'grid';
@@ -310,7 +311,7 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             resultText.innerHTML = "team QUAGSIRE's turn (X)";
         }
         ultimateTicButton[target].disabled = true;
-        console.log(ultimateTicButton[target])
+        //console.log(ultimateTicButton[target])
     }
 
     //original 3x3 check win function
@@ -327,6 +328,7 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             if (first == "X") {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 isWin = true;
+                ultimateWinArray.push("X");
             }
             if (first == "O") {
                 resultText.innerHTML = "team CLODSIRE wins (O)";
@@ -343,6 +345,19 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
     */
 }
 
+
+
+function startyManUltimate() { //show function for resets
+    firstTurn = true;
+    turnCount = 0;
+    resultText.innerHTML = "team QUAGSIRE's turn (X)";
+    ultimateTicButton.forEach(startButtons);
+    function startButtons(tileButtons) {
+        tileButtons.disabled = false;
+        tileButtons.innerText = "";
+        tileButtons.style.backgroundColor = "white";
+    }
+}
 
 /*
 function corresponsion() {
@@ -405,15 +420,3 @@ function enderManUltimate() { //end function
     }
 }
 */
-function startyManUltimate() { //show function for resets
-    firstTurn = true;
-    turnCount = 0;
-    resultText.innerHTML = "team QUAGSIRE's turn (X)";
-    ultimateTicButton.forEach(startButtons);
-    function startButtons(tileButtons) {
-        tileButtons.disabled = false;
-        tileButtons.innerText = "";
-        tileButtons.style.backgroundColor = "white";
-    }
-}
-
