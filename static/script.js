@@ -277,8 +277,8 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
                         let newerX = m + q;
                         let newerY = n + p; //the \other 8 coordinates
                         let gridIndex = 9 * newerY + newerX; //back to origial indexes
-                        if (ultimateTicButton[gridIndex].innerText == "") {
-                            ultimateTicButton[gridIndex].disabled = false; //enable the 9
+                        if (ultimateTicButton[gridIndex].innerText == "") { //only enable the ones that aren't filled
+                            ultimateTicButton[gridIndex].disabled = false; //enable the 9 (or less)
                         }
                         ultimateTicButton[gridIndex].style.backgroundColor = "#FFFF00";
                     }
@@ -321,6 +321,7 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             }
         }
     }
+    return isWin;
 }
 
 
@@ -393,6 +394,7 @@ function startyManUltimate() { //show function for resets
     function startButtons(tileButtons) {
         tileButtons.disabled = false;
         tileButtons.innerText = "";
+        tileButtons.style.backgroundColor = "white";
     }
 }
 
