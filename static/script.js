@@ -14,6 +14,7 @@ let referenceNineBox = document.querySelector(".ultimate-tic-box");
 //query selector to search multiple elements
 let ticButton = document.querySelectorAll(".tic-tac-button");
 let ultimateTicButton = document.querySelectorAll(".ultimate-tic-tac-button");
+let wholeUltimateScoreboard = document.querySelectorAll(".scoreboard-cell");
 
 //make lists to go4dawin
 let threeToWin = [
@@ -388,6 +389,12 @@ function startyManUltimate() { //show function for resets
         tileButtons.disabled = false;
         tileButtons.innerText = "";
         tileButtons.style.backgroundColor = "white";
+    }
+    wholeUltimateScoreboard.forEach(startScoreboard);
+    function startScoreboard(sbBoxes) {
+        sbBoxes.style.backgroundColor = "white";
+        sbBoxes.innerText = "";
+
     }
 }
 
