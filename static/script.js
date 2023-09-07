@@ -9,6 +9,7 @@ let threexelement = document.getElementById("threebythree");
 let ninexelement = document.getElementById("ninebynine");
 let referenceThreeBox = document.querySelector(".tic-box");
 let referenceNineBox = document.querySelector(".ultimate-tic-box");
+let logo = docutment.getElementById("drawing");
 
 
 //query selector to search multiple elements
@@ -20,7 +21,7 @@ let threeToWin = [
     //horizontal wins
     [0, 1, 2],
     [3, 4, 5],
-    [6, 7, 8],  
+    [6, 7, 8],
 
     //vertical wins
     [0, 3, 6],
@@ -45,6 +46,7 @@ function setNine() {
     //resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceThreeBox.style.display = 'none';
     referenceNineBox.style.display = 'grid';
+    logo.style.display = 'none';
     startyManUltimate();
 }
 
@@ -237,6 +239,11 @@ function checkWinUltimate(index) {
     for (let i = 0; i < 80; i += 27) { //0, 27, 54
         for (let j = 0; j < 9; j += 3) { //0, 3, 6
             checkWinUltimateAndGridLock(i + j, index); //top left of each 3x3 grid
+            /*
+            if (checkWinUltimateAndGridLock(i + j, index) == false) {
+                checkDrawUltimate();
+            }
+            */
         }
     }
 }
@@ -280,7 +287,10 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
                         if (ultimateTicButton[gridIndex].innerText == "") { //only enable the ones that aren't filled
                             ultimateTicButton[gridIndex].disabled = false; //enable the 9 (or less)
                         }
-                        
+                        //check if all 9 boxes in grid are filled and if they are then enable everything else
+                        let isAllFilled = 
+
+                        //highlights the 9
                         ultimateTicButton[gridIndex].style.backgroundColor = "#FFFF00";
                     }
                 }
@@ -322,7 +332,11 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             }
         }
     }
-    return isWin;
+    //return isWin;
+    //if not win, then check for draws
+    if (isWin == false) {
+
+    }
 }
 
 
