@@ -60,11 +60,9 @@ function setThree() {
 joverButton.addEventListener("click", () => {
     if (referenceThreeBox.style.display == 'none') {
         startyManUltimate();
-        console.log("slatt");
     }
     if (referenceThreeBox.style.display == 'grid') {
         startyMan();
-        console.log("goog");
     }
 });
 
@@ -180,19 +178,20 @@ function startyMan() { //show function for resets
 
 //copy paste functions for ultimate versions
 function clickyTicUltimate(buttonTile) {
-    buttonTile.addEventListener("click", () => { //when button is clicked, everything below is run
+    buttonTile.addEventListener("click", (event) => { //when button is clicked, everything below is run
         // save the index 0-80 which is the addedTTTIndex
+        console.log(event);
 
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
-            resultText.innerHTML = "team CLODSIRE's turn (O)";
+            //resultText.innerHTML = "team CLODSIRE's turn (O)";
             buttonTile.style.color = "lightskyblue";
             buttonTile.innerText = "X"; //draw X
             buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         else { //Clodsire's turn
             firstTurn = true; //switch turns
-            resultText.innerHTML = "team QUAGSIRE's turn (X)";
+            //resultText.innerHTML = "team QUAGSIRE's turn (X)";
             buttonTile.style.color = "saddlebrown";
             buttonTile.innerText = "O"; //draw da O
             buttonTile.disabled = true; //make button not able to be clicked anymore
@@ -205,6 +204,14 @@ function clickyTicUltimate(buttonTile) {
     )
 }
 
+function checkWinUltimate() {
+    for (let i = 0; i < 80; i += 27) { //0, 27, 54
+        for (let j = 0; j < 9; j += 3) { //0, 3, 6
+            checkWinUltimateUnoBoard(i + j); //top left of each 3x3 grid
+        }
+    }
+}
+
 function checkDrawUltimate() { //what happens in a draw?
     if (turnCount == 9) {
         enderManUltimate();
@@ -214,8 +221,7 @@ function checkDrawUltimate() { //what happens in a draw?
     }
 }
 
-function checkWinUltimateUnoBoard(x) {
-    // console.log(ultimateTicButton);
+function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of each grid
     let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
     x %= 9; //mod by 9 to get 0-8 x coordinate
     let peterSmells = [] //create array
@@ -224,22 +230,19 @@ function checkWinUltimateUnoBoard(x) {
             let newX = x + j;
             let newY = y + i; //the other 8 coordinates
             let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
-
-
+            /*
+            addedTTTIndex = corresponsion();
             // if (index == addedTTTIndex) { // get index of coordinate you just added
             //     i * 27 + j * 3 // top left corner of 3x3 you wanna enable
             // }
-
+    */
             peterSmells.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
 
-    // console.log(peterSmells);
-
     //original 3x3 check win function
     isWin = false;
     for (let i = 0; i < threeToWin.length; i++) {
-        // console.log(ultimateTicButton); //p to check everything
         const p = threeToWin[i];
         let [first, second, third] = [ //check combinations of 3
             peterSmells[p[0]].innerText, //innerText gets X or O
@@ -248,7 +251,6 @@ function checkWinUltimateUnoBoard(x) {
         ];
         if (first != "" && second != "" && third != "" && first == second && second == third) { 
         //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
-            enderManUltimate();
             if (first == "X") {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 isWin = true;
@@ -259,22 +261,21 @@ function checkWinUltimateUnoBoard(x) {
             }
         }
     }
-    
-    function enderManUltimate() { //end function
-        peterSmells.forEach(stopButtons);
-        function stopButtons(tileButtons) {
-            tileButtons.disabled = true;
-        }
-    }
 }
 
-function checkWinUltimate() {
-    for (let i = 0; i < 80; i += 27) { //0, 27, 54
-        for (let j = 0; j < 9; j += 3) { //0, 3, 6
-            checkWinUltimateUnoBoard(i + j); //top left of each 3x3 grid
+
+/*
+//function corresponsion(threebythreeGrids, buttonTile) {
+function corresponsion() {
+    //TIME FOR CORRESPONDINGSION
+    for (let i = 0; i <= 80; i++) {
+        if (ultimateTicButton[i].innerText == ",") {
+            return i;
         }
     }
 }
+*/
+
 /*
 function enderManUltimate() { //end function
     ultimateTicButton.forEach(stopButtons);
