@@ -37,6 +37,7 @@ let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
 
 //resultText.style.visibility = 'hidden';
+referenceThreeBox.style.display = 'grid';
 
 ninexelement.addEventListener("click", setNine);
 function setNine() {
@@ -178,36 +179,63 @@ function startyMan() { //show function for resets
 
 //copy paste functions for ultimate versions
 function clickyTicUltimate(buttonTile) {
-    buttonTile.addEventListener("click", (event) => { //when button is clicked, everything below is run
+    buttonTile.addEventListener("click", () => { //when button is clicked, everything below is run
         // save the index 0-80 which is the addedTTTIndex
-        console.log(event);
 
+        //disable all grids
+        ultimateTicButton.forEach(ele);
+        function ele(tileButtons) {
+            tileButtons.disabled = "true";
+        }
+        
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
             //resultText.innerHTML = "team CLODSIRE's turn (O)";
             buttonTile.style.color = "lightskyblue";
-            buttonTile.innerText = "X"; //draw X
+            buttonTile.innerText = ","; //draw X
+            for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
+                if (ultimateTicButton[i].innerText == ",") { //finds it
+                    checkWinUltimate(i); //go !
+                }
+            }
+            buttonTile.innerText = "X";
             buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         else { //Clodsire's turn
             firstTurn = true; //switch turns
             //resultText.innerHTML = "team QUAGSIRE's turn (X)";
             buttonTile.style.color = "saddlebrown";
-            buttonTile.innerText = "O"; //draw da O
+            buttonTile.innerText = ","; //draw da O
+            for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
+                if (ultimateTicButton[i].innerText == ",") { //finds it
+                    checkWinUltimate(i); //go !
+                }
+            }
+            buttonTile.innerText = "O";
             buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
+        /*
+        for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
+            if (ultimateTicButton[i].innerText == ",") {
+                checkWinUltimate(i);
+            }
+        }
+        */
+
+        /*
         if (checkWinUltimate() == false) { //check for wins on every click
             checkDrawUltimate(); //check for draws on every click
         }
+        */
     }
     )
 }
 
-function checkWinUltimate() {
+function checkWinUltimate(index) {
     for (let i = 0; i < 80; i += 27) { //0, 27, 54
         for (let j = 0; j < 9; j += 3) { //0, 3, 6
-            checkWinUltimateUnoBoard(i + j); //top left of each 3x3 grid
+            checkWinUltimateAndGridLock(i + j, index); //top left of each 3x3 grid
         }
     }
 }
@@ -221,7 +249,7 @@ function checkDrawUltimate() { //what happens in a draw?
     }
 }
 
-function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of each grid
+function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top left of each grid
     let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
     x %= 9; //mod by 9 to get 0-8 x coordinate
     let tripleGridArray = [] //create array
@@ -230,12 +258,27 @@ function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of ea
             let newX = x + j;
             let newY = y + i; //the other 8 coordinates
             let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
+            
             /*
             aaron comments lmao
             if (index == addedTTTIndex) { // get index of coordinate you just added
                 i * 27 + j * 3 // top left corner of 3x3 you wanna enable
             }
             */
+            if (index == target) { // 1 instance where the clicked index (target) is in the 3x3 grid being checked
+                tlCorner = i * 27 + j * 3 // takes this specific i and j and corresponds it with top left corner of corresponding 3x3 grid
+
+                //get the other 8 coords with the top left corner AGAIN
+                for (let p = 0; p < 3; p++) { //traverse through 3
+                    for (let q = 0; q < 3; q++) { //traverse through 3
+                        let newerX = x + q;
+                        let newerY = y + p; //the other 8 coordinates
+                        let gridIndex = 9 * newerY + newerX; //back to origial indexes
+                        ultimateTicButton[gridIndex].disabled = false; //enable the 9
+                    }
+                }
+            }
+            
             tripleGridArray.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
@@ -264,9 +307,12 @@ function checkWinUltimateUnoBoard(x) { //x are the numbers of the top left of ea
 }
 
 
-
-//function corresponsion(threebythreeGrids, buttonTile) {
+/*
 function corresponsion() {
+    ultimateTicButton.forEach(ele);
+    function ele(tileButtons) {
+        tileButtons.disabled = "true";
+    }
     for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
         if (ultimateTicButton[i].innerText == ",") {
             let xCoord = String(i % 3); //0, 1, or 2 for x columns
@@ -300,14 +346,22 @@ function corresponsion() {
                             "leftcent": 27, "midcent": 30, "rightcent": 33,
                             "leftbot": 54, "midbot": 57, "rightbot": 60}
             let tlIndex = tlCorner[describedPosition]; //gets the top left corner of 3x3 grid
+
+            //copy and pasted aaron logic to get the other 8 coords with the index of the top left corner
+            let y = ~~(tlIndex / 9); //divide by 9 to get 0-8 y coordinate
+            tlIndex %= 9; //mod by 9 to get 0-8 x coordinate
             for (let i = 0; i < 3; i++) { //traverse through 3
                 for (let j = 0; j < 3; j++) { //traverse through 3
-                    
+                    let newX = tlIndex + j;
+                    let newY = tlIndex + i; //the other 8 coordinates
+                    let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
+                    ultimateTicButton[i].disabled = false;
                 }
             }
         }
     }
 }
+*/
 
 
 /*
