@@ -280,6 +280,7 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
                         if (ultimateTicButton[gridIndex].innerText == "") { //only enable the ones that aren't filled
                             ultimateTicButton[gridIndex].disabled = false; //enable the 9 (or less)
                         }
+                        
                         ultimateTicButton[gridIndex].style.backgroundColor = "#FFFF00";
                     }
                 }
