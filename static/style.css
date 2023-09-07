@@ -28,7 +28,7 @@ p {
 
 /* Menu button*/
 .dropbutton {
-    background-color: navy;
+    background-color: lightblue;
     color: ghostwhite;
     padding: 12px;
     font-size: 24px;
@@ -87,6 +87,7 @@ p {
     justify-content: center;
     align-items: center;
     width: 25%;
+    flex-direction: column;
 }
 
 #drawing-container {
@@ -187,7 +188,7 @@ div1 { /*Is it Jover?*/
 }
 
 .joe-button {
-    background-color: navy;
+    background-color: saddlebrown;
     color: white;
     padding: 15px 32px;
     text-decoration: none;

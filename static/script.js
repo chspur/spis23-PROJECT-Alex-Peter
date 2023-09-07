@@ -9,6 +9,7 @@ let threexelement = document.getElementById("threebythree");
 let ninexelement = document.getElementById("ninebynine");
 let referenceThreeBox = document.querySelector(".tic-box");
 let referenceNineBox = document.querySelector(".ultimate-tic-box");
+let finalWinText = document.getElementById("final-win");
 
 
 //query selector to search multiple elements
@@ -242,6 +243,33 @@ function clickyTicUltimate(buttonTile) {
             //buttonTile.disabled = true; //make button not able to be clicked anymore
         }
         turnCount += 1; //increase counter on every click
+
+        isUltimateWin = false;
+        for (let i = 0; i < threeToWin.length; i++) { //p to check everything
+            const p = threeToWin[i];
+            let [first, second, third] = [ //check combinations of 3
+                wholeUltimateScoreboard[p[0]].innerText, //innerText gets X or O
+                wholeUltimateScoreboard[p[1]].innerText,
+                wholeUltimateScoreboard[p[2]].innerText,
+            ];
+            if (first != "" && second != "" && third != "" && first == second && second == third) { 
+            //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
+                if (first == "X") {
+                    finalWinText.innerHTML = "team QUAGSIRE wins (X)";
+                    //resultText.style.visibility = 'visible';
+                    isUltimateWin = true;
+                }
+                if (first == "O") {
+                    finalWinText.innerHTML = "team CLODSIRE wins (O)";
+                    //resultText.style.visibility = 'visible';
+                    isUltimateWin = true;
+                }
+            }
+        }
+
+
+    return isWin;
+
         /*
         for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
             if (ultimateTicButton[i].innerText == ",") {
