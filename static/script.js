@@ -199,7 +199,7 @@ function clickyTicUltimate(buttonTile) {
         }
         turnCount += 1; //increase counter on every click
         if (checkWinUltimate() == false) { //check for wins on every click
-            checkDraw(); //check for draws on every click
+            checkDrawUltimate(); //check for draws on every click
         }
     }
     )
@@ -236,6 +236,7 @@ function checkWinUltimateUnoBoard(x) {
 
     // console.log(peterSmells);
 
+    //original 3x3 check win function
     isWin = false;
     for (let i = 0; i < threeToWin.length; i++) {
         // console.log(ultimateTicButton); //p to check everything
@@ -258,22 +259,30 @@ function checkWinUltimateUnoBoard(x) {
             }
         }
     }
-    return isWin;
+    
+    function enderManUltimate() { //end function
+        peterSmells.forEach(stopButtons);
+        function stopButtons(tileButtons) {
+            tileButtons.disabled = true;
+        }
+    }
 }
 
 function checkWinUltimate() {
-    for (let i = 0; i < 80; i += 27) {
-        for (let j = 0; j < 9; j += 3) {
+    for (let i = 0; i < 80; i += 27) { //0, 27, 54
+        for (let j = 0; j < 9; j += 3) { //0, 3, 6
             checkWinUltimateUnoBoard(i + j); //top left of each 3x3 grid
         }
     }
 }
+/*
 function enderManUltimate() { //end function
     ultimateTicButton.forEach(stopButtons);
     function stopButtons(tileButtons) {
         tileButtons.disabled = true;
     }
 }
+*/
 function startyManUltimate() { //show function for resets
     firstTurn = true;
     turnCount = 0;
