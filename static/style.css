@@ -119,9 +119,9 @@ div1 { /*Is it Jover?*/
     grid-template-rows: repeat(9, 3vw);
     grid-template-columns: repeat(9, 3vw);
     font-family: 'Roboto', sans-serif;
-    border: 5px solid black;
+    border: 3px solid black;
     background-color: black;
-    grid-gap: 5px;
+    grid-gap: 3px;
     position: absolute;
 }
 
