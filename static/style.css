@@ -82,7 +82,7 @@ p {
     width: 90vw;
 }
 
-#scoreboard-container {
+#scoreboard-container { /*display this to none in the 3x3 and block it in the 9x9*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -101,6 +101,7 @@ p {
     justify-content: center;
     align-items: center;
     width: 50%;
+    /*width should be 61% and justify-content: right to make the placement in the center*/
 }
 
 div1 { /*Is it Jover?*/
@@ -173,6 +174,8 @@ div1 { /*Is it Jover?*/
     width: 12vw;
     flex-wrap: wrap;
     border: 3px solid black;
+    font-size: 3vw;
+    text-align: center;
 }
 
 #scoreboard div {
@@ -219,4 +222,9 @@ img {
     justify-content: center;
     bottom: 100px;
     position:relative
+}
+
+.scoreboard-cell {
+    text-align: center;
+    font-size: 3vw;
 }

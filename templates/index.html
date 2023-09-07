@@ -13,7 +13,7 @@
 
 <body>
     <h1>Tic-Tac-Toe</h1>
-    <h2 id="authors">Created by Peter & Alex </h1>
+    <h2 id="authors">Created by Peter & Alex</h1>
         <hr> <!--Creates the line break-->
         <pre><b> > Rules of the game:</b>
     Get 3 in a row to win
@@ -40,15 +40,15 @@
         <div id="content-container">
             <div id="scoreboard-container">
                 <div id="scoreboard">
-                    <div id="topleft"></div>
-                    <div id="topcenter"></div>
-                    <div id="topright"></div>
-                    <div id="midleft"></div>
-                    <div id="midcenter"></div>
-                    <div id="midright"></div>
-                    <div id="botleft"></div>
-                    <div id="botcenter"></div>
-                    <div id="botright"></div>
+                    <div id="topleft" class="scoreboard-cell"></div>
+                    <div id="topcenter" class="scoreboard-cell"></div>
+                    <div id="topright" class="scoreboard-cell"></div>
+                    <div id="midleft" class="scoreboard-cell"></div>
+                    <div id="midcenter" class="scoreboard-cell"></div>
+                    <div id="midright" class="scoreboard-cell"></div>
+                    <div id="botleft" class="scoreboard-cell"></div>
+                    <div id="botcenter" class="scoreboard-cell"></div>
+                    <div id="botright" class="scoreboard-cell"></div>
                 </div>
             </div>
             <div class="button-container-container">
@@ -170,13 +170,13 @@
             </div>
 
             <div id="drawing-container">
-                <img id="drawing" class="Heeju" src="{{ url_for('static', filename='Logo.gif') }}" alt="">
+                <img class="Heeju" src="{{ url_for('static', filename='Logo.gif') }}" alt="">
             </div>
         </div>
         <div id="winning-line"></div>
         <!-- <svg>
             <image class="change-my-color" xlink:href="https://www.svgrepo.com/show/12848/x-symbol.svg" width="96" height="96" src="ppngfallback.png" />
-        </svg> -->
+        </svg> -->   <!--what is this?-->
         <script src="{{url_for('static', filename='script.js')}}"></script>
 </body>
 

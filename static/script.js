@@ -9,7 +9,6 @@ let threexelement = document.getElementById("threebythree");
 let ninexelement = document.getElementById("ninebynine");
 let referenceThreeBox = document.querySelector(".tic-box");
 let referenceNineBox = document.querySelector(".ultimate-tic-box");
-// let logo = document.getElementById("drawing");
 
 
 //query selector to search multiple elements
@@ -33,10 +32,34 @@ let threeToWin = [
     [2, 4, 6]
 ]
 
+var indexToScoreboard =  {
+    0: "topleft",
+    3: "topcenter",
+    6: "topright",
+    27: "midleft",
+    30: "midcenter",
+    33: "midright",
+    54: "botleft",
+    57: "botcenter",
+    60: "botright"
+}
+var indexToUltimateWinArray = {
+    0: 0,
+    3: 1,
+    6: 2,
+    27: 3,
+    30: 4,
+    33: 5,
+    54: 6,
+    57: 7,
+    60: 8
+}
+var currentTlCorner = null;
+
 //pvp: whos turn is it? Player1 goes first
 let firstTurn = true;
 let turnCount = 0; // counter to count the turns that have passed
-let ultimateWinArray = [];
+let ultimateWinArray = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 
 //resultText.style.visibility = 'hidden';
 referenceThreeBox.style.display = 'grid';
@@ -47,7 +70,6 @@ function setNine() {
     resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceThreeBox.style.display = 'none';
     referenceNineBox.style.display = 'grid';
-    //logo.style.display = 'none';
     startyManUltimate();
 }
 
@@ -258,10 +280,13 @@ function checkDrawUltimate() { //what happens in a draw?
     }
 }
 
-function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top left of each grid
-    let y = ~~(x / 9); //divide by 9 to get 0-8 y coordinate
-    x %= 9; //mod by 9 to get 0-8 x coordinate
+function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top left of each grid
+    let y = ~~(w / 9); //divide by 9 to get 0-8 y coordinate
+    let x = w % 9; //mod by 9 to get 0-8 x coordinate
     let tripleGridArray = [] //create array
+    if (w!=currentTlCorner) {
+        document.getElementById(indexToScoreboard[w]).style.backgroundColor = "white";
+    }
     for (let i = 0; i < 3; i++) { //traverse through 3
         for (let j = 0; j < 3; j++) { //traverse through 3
             let newX = x + j;
@@ -276,7 +301,9 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             */
             if (index == target) { // 1 instance where the clicked index (target) is in the 3x3 grid being checked
                 tlCorner = i * 27 + j * 3 // takes this specific i and j and corresponds it with top left corner of corresponding 3x3 grid
-
+                currentTlCorner = tlCorner;
+                document.getElementById(indexToScoreboard[w]).style.backgroundColor = "white";
+                document.getElementById(indexToScoreboard[tlCorner]).style.backgroundColor = "#FFFF00";
                 //get the other 8 coords AGAIN but with the top left corner
                 let n = ~~(tlCorner / 9);
                 let m = tlCorner % 9;
@@ -300,6 +327,8 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             tripleGridArray.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
+
+
     //put back X or O
     if (ultimateTicButton[target].innerText == ",") {
         if (ultimateTicButton[target].style.color == "lightskyblue") {
@@ -328,11 +357,14 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             if (first == "X") {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 isWin = true;
-                ultimateWinArray.push("X");
+                document.getElementById(indexToScoreboard[w]).innerText = "X";
+                // ultimateWinArray.push("X");
+
             }
             if (first == "O") {
                 resultText.innerHTML = "team CLODSIRE wins (O)";
                 isWin = true;
+                document.getElementById(indexToScoreboard[w]).innerText = "O";
             }
         }
     }
