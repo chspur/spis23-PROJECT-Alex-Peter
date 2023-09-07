@@ -185,7 +185,8 @@ function clickyTicUltimate(buttonTile) {
         //disable all grids
         ultimateTicButton.forEach(ele);
         function ele(tileButtons) {
-            tileButtons.disabled = "true";
+            tileButtons.disabled = true;
+            tileButtons.style.backgroundColor = "white";
         }
         
         if (firstTurn == true) { //Quagsire's turn
@@ -268,13 +269,18 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
             if (index == target) { // 1 instance where the clicked index (target) is in the 3x3 grid being checked
                 tlCorner = i * 27 + j * 3 // takes this specific i and j and corresponds it with top left corner of corresponding 3x3 grid
 
-                //get the other 8 coords with the top left corner AGAIN
+                //get the other 8 coords AGAIN but with the top left corner
+                let n = ~~(tlCorner / 9);
+                let m = tlCorner % 9;
                 for (let p = 0; p < 3; p++) { //traverse through 3
                     for (let q = 0; q < 3; q++) { //traverse through 3
-                        let newerX = x + q;
-                        let newerY = y + p; //the other 8 coordinates
+                        let newerX = m + q;
+                        let newerY = n + p; //the \other 8 coordinates
                         let gridIndex = 9 * newerY + newerX; //back to origial indexes
-                        ultimateTicButton[gridIndex].disabled = false; //enable the 9
+                        if (ultimateTicButton[gridIndex].innerText == "") {
+                            ultimateTicButton[gridIndex].disabled = false; //enable the 9
+                        }
+                        ultimateTicButton[gridIndex].style.backgroundColor = "#FFFF00";
                     }
                 }
             }
@@ -290,7 +296,8 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
         if (ultimateTicButton[target].style.color == "saddlebrown") {
             ultimateTicButton[target].innerText = "O";
         }
-        ultimateTicButton[target].disabled = "true";
+        ultimateTicButton[target].disabled = true;
+        console.log(ultimateTicButton[target])
     }
 
     //original 3x3 check win function
