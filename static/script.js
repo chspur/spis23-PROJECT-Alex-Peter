@@ -42,8 +42,8 @@ referenceThreeBox.style.display = 'grid';
 
 ninexelement.addEventListener("click", setNine);
 function setNine() {
-    //turnCount = 0;
-    //resultText.innerHTML = "team QUAGSIRE's turn (X)";
+    turnCount = 0;
+    resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceThreeBox.style.display = 'none';
     referenceNineBox.style.display = 'grid';
     logo.style.display = 'none';
@@ -52,8 +52,8 @@ function setNine() {
 
 threexelement.addEventListener("click", setThree);
 function setThree() {
-    //turnCount = 0;
-    //resultText.innerHTML = "team QUAGSIRE's turn (X)";
+    turnCount = 0;
+    resultText.innerHTML = "team QUAGSIRE's turn (X)";
     referenceNineBox.style.display = 'none';
     referenceThreeBox.style.display = 'grid';
     startyMan();
@@ -303,9 +303,11 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
     if (ultimateTicButton[target].innerText == ",") {
         if (ultimateTicButton[target].style.color == "lightskyblue") {
             ultimateTicButton[target].innerText = "X";
+            resultText.innerHTML = "team CLODSIRE's turn (O)";
         }
         if (ultimateTicButton[target].style.color == "saddlebrown") {
             ultimateTicButton[target].innerText = "O";
+            resultText.innerHTML = "team QUAGSIRE's turn (X)";
         }
         ultimateTicButton[target].disabled = true;
         console.log(ultimateTicButton[target])
