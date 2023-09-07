@@ -9,7 +9,7 @@ let threexelement = document.getElementById("threebythree");
 let ninexelement = document.getElementById("ninebynine");
 let referenceThreeBox = document.querySelector(".tic-box");
 let referenceNineBox = document.querySelector(".ultimate-tic-box");
-let logo = docutment.getElementById("drawing");
+let logo = document.getElementById("drawing");
 
 
 //query selector to search multiple elements
@@ -334,9 +334,11 @@ function checkWinUltimateAndGridLock(x, target) { //x are the numbers of the top
     }
     //return isWin;
     //if not win, then check for draws
+    /*
     if (isWin == false) {
 
     }
+    */
 }
 
 
