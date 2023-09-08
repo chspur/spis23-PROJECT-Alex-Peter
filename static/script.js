@@ -272,6 +272,11 @@ function clickyTicUltimate(buttonTile) {
                     isUltimateWin = true;
                     enderManUltimate();
                 }
+                if (first == "☠️") {
+                    finalWinText.innerHTML = "emmet is cool";
+                    isUltimateWin = true;
+                    enderManUltimate();
+                }
             }
         }
         if (isUltimateWin == false) {
@@ -452,13 +457,17 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
             }
         }
     }
-    //return isWin;
-    //if not win, then check for draws
-    /*
-    if (isWin == false) {
 
+    isFull = true;
+    for (let i = 0; i < 9; i++) {
+        if (tripleGridArray[i].innerText === "") {
+            isFull = false;
+        }
     }
-    */
+
+    if (isWin == false && isFull == true) { //if not win, check for draws
+        document.getElementById(indexToScoreboard[w]).innerHTML = "☠️";
+    }
 }
 
 
