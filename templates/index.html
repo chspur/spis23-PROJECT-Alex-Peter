@@ -10,7 +10,9 @@
     <!-- <link rel="Gif" href="gif.html"> -->
     <title>Tic-Tac-Toe</title>
 </head>
-
+<audio controls autoplay>
+    <source  id="vamp" src="{{ url_for('static', filename='pokemonmusic.mp3') }}" type="audio/mp3" loop="true" hidden="true">
+</audio>
 <body>
     <img id="ultimate-ultimate-win" src="{{ url_for('static', filename='quagsire-quag.gif') }}" style="display: none;">
     <h1>Tic-QUAG-Toe</h1>

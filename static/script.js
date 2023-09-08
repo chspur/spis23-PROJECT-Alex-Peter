@@ -1,5 +1,7 @@
 // '//' is how you comment
 // Idk what to put here
+var u = document.getElementById("vamp");
+u.play();
 
 //make variables for the buttons and text bro bro
 let joverButton = document.querySelector(".joe-button");
