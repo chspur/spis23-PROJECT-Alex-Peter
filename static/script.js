@@ -387,9 +387,11 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
                     ultimateTicButton.forEach(ele);
                     function ele(tileButtons) {
                         if (tileButtons.innerText === '') {
-                            tileButtons.disabled = false;
+                            tileButtons.disabled = false; //enable all
+                            tileButtons.style.backgroundColor = "#FFFF00"; //idk if i wanna kep this
                         } else {
-                            tileButtons.disabled = true;
+                            tileButtons.disabled = true; //except for already filled ones
+                            tileButtons.style.backgroundColor = "white"; //idk if i wanna kep this
                         }
                     }
 
@@ -433,7 +435,7 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
         if (first != "" && second != "" && third != "" && first == second && second == third) {
             //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             if (first == "X") {
-                resultText.innerHTML = "team QUAGSIRE wins (X)";
+                //resultText.innerHTML = "team QUAGSIRE wins (X)"; //bruh
                 isWin = true;
                 if (document.getElementById(indexToScoreboard[w]).innerText === "") {
                     document.getElementById(indexToScoreboard[w]).innerText = "X";
@@ -442,7 +444,7 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
 
             }
             if (first == "O") {
-                resultText.innerHTML = "team CLODSIRE wins (O)";
+                //resultText.innerHTML = "team CLODSIRE wins (O)"; //bruh
                 isWin = true;
                 if (document.getElementById(indexToScoreboard[w]).innerText === "") {
                     document.getElementById(indexToScoreboard[w]).innerText = "O";
