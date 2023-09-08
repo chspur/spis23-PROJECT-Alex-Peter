@@ -255,3 +255,12 @@ img {
     text-align: center;
     font-size: 3vw;
 }
+
+#ultimate-ultimate-win {
+    position: absolute;
+    left: 0;
+    right: 0;
+    min-width: 300vh;
+    min-height: 200vh;
+    z-index: 10000;
+}

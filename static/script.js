@@ -275,6 +275,7 @@ function clickyTicUltimate(buttonTile) {
                 if (first == "☠️") {
                     finalWinText.innerHTML = "emmet is cool";
                     isUltimateWin = true;
+                    document.getElementById("ultimate-ultimate-win").style.display = "";
                     enderManUltimate();
                 }
             }
