@@ -34,7 +34,7 @@ let threeToWin = [
     [2, 4, 6]
 ]
 
-var indexToScoreboard =  {
+var indexToScoreboard = {
     0: "topleft",
     3: "topcenter",
     6: "topright",
@@ -144,8 +144,8 @@ function checkWin() {
             ticButton[p[1]].innerText,
             ticButton[p[2]].innerText,
         ];
-        if (first != "" && second != "" && third != "" && first == second && second == third) { 
-        //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
+        if (first != "" && second != "" && third != "" && first == second && second == third) {
+            //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             enderMan();
             if (first == "X") {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
@@ -167,17 +167,21 @@ function checkWin() {
 function drawWinLine(specificCondition, winner) {
     if (winner == "X") {
         key = String(specificCondition);
-        var dict = {"0": 0, "1": 1, "2": 2,
-                    "3": 3, "4": 4, "5": 5,
-                    "6": 6, "7": 7};
+        var dict = {
+            "0": 0, "1": 1, "2": 2,
+            "3": 3, "4": 4, "5": 5,
+            "6": 6, "7": 7
+        };
         imageNumber = dict[key];
         winLine[imageNumber].style.display = 'block';
     }
     if (winner == "O") {
         key = String(specificCondition);
-        var dict = {"0": 8, "1": 9, "2": 10,
-                    "3": 11, "4": 12, "5": 13,
-                    "6": 14, "7": 15};
+        var dict = {
+            "0": 8, "1": 9, "2": 10,
+            "3": 11, "4": 12, "5": 13,
+            "6": 14, "7": 15
+        };
         imageNumber = dict[key];
         winLine[imageNumber].style.display = 'block';
     }
@@ -217,7 +221,7 @@ function clickyTicUltimate(buttonTile) {
             tileButtons.disabled = true;
             tileButtons.style.backgroundColor = "white";
         }
-        
+
         if (firstTurn == true) { //Quagsire's turn
             firstTurn = false; //switch turns
             //resultText.innerHTML = "team CLODSIRE's turn (O)";
@@ -254,23 +258,45 @@ function clickyTicUltimate(buttonTile) {
                 wholeUltimateScoreboard[p[1]].innerText,
                 wholeUltimateScoreboard[p[2]].innerText,
             ];
-            if (first != "" && second != "" && third != "" && first == second && second == third) { 
-            //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
+            if (first != "" && second != "" && third != "" && first == second && second == third) {
+                //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
                 if (first == "X") {
-                    finalWinText.innerHTML = "team QUAGSIRE wins (X)";
+                    finalWinText.innerHTML = "team QUAGSIRE wins ULTIMATELY (X)";
                     //resultText.style.visibility = 'visible';
                     isUltimateWin = true;
+                    enderManUltimate();
                 }
                 if (first == "O") {
-                    finalWinText.innerHTML = "team CLODSIRE wins (O)";
+                    finalWinText.innerHTML = "team CLODSIRE wins ULTIMATELY (O)";
                     //resultText.style.visibility = 'visible';
                     isUltimateWin = true;
+                    enderManUltimate();
                 }
             }
         }
+        if (isUltimateWin == false) {
+            let draw = true;
+            for (const sbBoxes of wholeUltimateScoreboard) {
+                console.log(sbBoxes.innerHTML)
+                if (sbBoxes.innerHTML === "") {
+                    draw = false;
+                    return;
+                }
+            }
 
+            if (draw) {
+                finalWinText.innerHTML = "ULTIMATE draw (you both failed)";
+                enderManUltimate();
+            }
+            // function startScoreboard(sbBoxes) {
+            //     if (sbBoxes.innerText != "") {
 
-    return isWin;
+            //     }
+            // } Peter is cool
+            //finalWinText.innerHTML = "ULTIMATE draw (you both failed)";
+            //enderManUltimate();
+        }
+
 
         /*
         for (let i = 0; i <= 80; i++) { //i is index of the button that was clicked (the one with ,)
@@ -302,6 +328,7 @@ function checkWinUltimate(index) {
     }
 }
 
+/*
 function checkDrawUltimate() { //what happens in a draw?
     if (turnCount == 9) {
         enderManUltimate();
@@ -310,12 +337,13 @@ function checkDrawUltimate() { //what happens in a draw?
 
     }
 }
+*/
 
 function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top left of each grid
     let y = ~~(w / 9); //divide by 9 to get 0-8 y coordinate
     let x = w % 9; //mod by 9 to get 0-8 x coordinate
     let tripleGridArray = [] //create array
-    if (w!=currentTlCorner) {
+    if (w != currentTlCorner) {
         document.getElementById(indexToScoreboard[w]).style.backgroundColor = "white";
     }
     for (let i = 0; i < 3; i++) { //traverse through 3
@@ -323,7 +351,7 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
             let newX = x + j;
             let newY = y + i; //the other 8 coordinates
             let index = 9 * newY + newX; //revert y back to 0-80 values, add back the x
-            
+
             /*
             aaron comments lmao
             if (index == addedTTTIndex) { // get index of coordinate you just added
@@ -338,23 +366,42 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
                 //get the other 8 coords AGAIN but with the top left corner
                 let n = ~~(tlCorner / 9);
                 let m = tlCorner % 9;
+                let isAllFilled = true;
                 for (let p = 0; p < 3; p++) { //traverse through 3
                     for (let q = 0; q < 3; q++) { //traverse through 3
                         let newerX = m + q;
                         let newerY = n + p; //the \other 8 coordinates
                         let gridIndex = 9 * newerY + newerX; //back to origial indexes
+                        //check if all 9 boxes in grid are filled and if they are then enable everything else
                         if (ultimateTicButton[gridIndex].innerText == "") { //only enable the ones that aren't filled
                             ultimateTicButton[gridIndex].disabled = false; //enable the 9 (or less)
+                            isAllFilled = false;
                         }
-                        //check if all 9 boxes in grid are filled and if they are then enable everything else
-                        let isAllFilled = 
 
                         //highlights the 9
                         ultimateTicButton[gridIndex].style.backgroundColor = "#FFFF00";
                     }
                 }
+                if (isAllFilled) {
+                    //enable all grids that don't have something
+                    ultimateTicButton.forEach(ele);
+                    function ele(tileButtons) {
+                        if (tileButtons.innerText === '') {
+                            tileButtons.disabled = false;
+                        } else {
+                            tileButtons.disabled = true;
+                        }
+                    }
+
+                    // set all in scoreboard to white
+                    wholeUltimateScoreboard.forEach(startScoreboard);
+                    function startScoreboard(sbBoxes) {
+                        sbBoxes.style.backgroundColor = "white";
+                
+                    }
+                }
             }
-            
+
             tripleGridArray.push(ultimateTicButton[index]); //array gets 3x3 tictactoe board
         }
     }
@@ -383,19 +430,23 @@ function checkWinUltimateAndGridLock(w, target) { //x are the numbers of the top
             tripleGridArray[p[1]].innerText,
             tripleGridArray[p[2]].innerText,
         ];
-        if (first != "" && second != "" && third != "" && first == second && second == third) { 
-        //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
+        if (first != "" && second != "" && third != "" && first == second && second == third) {
+            //check if 3 slots are filled with something (X or O) and they are all equal to each other (all X or all Y)
             if (first == "X") {
                 resultText.innerHTML = "team QUAGSIRE wins (X)";
                 isWin = true;
-                document.getElementById(indexToScoreboard[w]).innerText = "X";
+                if (document.getElementById(indexToScoreboard[w]).innerText === "") {
+                    document.getElementById(indexToScoreboard[w]).innerText = "X";
+                }
                 // ultimateWinArray.push("X");
 
             }
             if (first == "O") {
                 resultText.innerHTML = "team CLODSIRE wins (O)";
                 isWin = true;
-                document.getElementById(indexToScoreboard[w]).innerText = "O";
+                if (document.getElementById(indexToScoreboard[w]).innerText === "") {
+                    document.getElementById(indexToScoreboard[w]).innerText = "O";
+                }
             }
         }
     }
@@ -420,11 +471,19 @@ function startyManUltimate() { //show function for resets
         tileButtons.innerText = "";
         tileButtons.style.backgroundColor = "white";
     }
+    finalWinText.innerHTML = "who shall win ?";
     wholeUltimateScoreboard.forEach(startScoreboard);
     function startScoreboard(sbBoxes) {
         sbBoxes.style.backgroundColor = "white";
         sbBoxes.innerText = "";
 
+    }
+}
+
+function enderManUltimate() { //end function
+    ultimateTicButton.forEach(stopButtons);
+    function stopButtons(tileButtons) {
+        tileButtons.disabled = true;
     }
 }
 
@@ -480,12 +539,3 @@ function corresponsion() {
 }
 */
 
-
-/*
-function enderManUltimate() { //end function
-    ultimateTicButton.forEach(stopButtons);
-    function stopButtons(tileButtons) {
-        tileButtons.disabled = true;
-    }
-}
-*/
